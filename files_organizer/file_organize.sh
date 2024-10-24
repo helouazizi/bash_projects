@@ -4,6 +4,7 @@ echo "Hello i'm your file organizer"
 echo "================================"
 
 
+
 # this function about usage 
 usage(){
 echo "usage : $0 <dir>"
@@ -39,13 +40,12 @@ echo "file  organizer started at "$(date)"" >> "$log_file"
 # lop thought  all files in the dir and move then into  the sub_dirs
 for file in "$input_dir"/*; do 
     if  [ -f "$file" ]; then 
-    ex=$(basename "$file" | cut -d '.' -f2-)
+    extention=$(basename "$file" | cut -d '.' -f2-)
    # echo "$ex"
-        case  $ex in 
+        case  $extention in 
             
             mp3|wav|ogg)
             mv "$file" "$input_dir/music"
-            echo "gooooood"
             ;;
             mp4|avi|mov)
             mv "$file" "$input_dir/videos"
@@ -67,5 +67,8 @@ for file in "$input_dir"/*; do
     fi
 done
 echo "Processing directory : $input_dir"
+echo "Seccusfully  organized files in the directory:  $input_dir"
+echo "file  organizer finished at "$(date)"" >> "$log_file"
+
 
 
